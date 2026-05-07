@@ -1,0 +1,13 @@
+{
+  "name": "kiro-solana-cli",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --filter @kiro/solana-cli dev",
+    "build": "pnpm --filter @kiro/solana-cli build"
+  }
+}

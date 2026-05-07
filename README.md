@@ -1,1 +1,1 @@
-# Web3-Frontier
+# Kiro Solana CLI

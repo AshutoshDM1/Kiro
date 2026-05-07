@@ -1,0 +1,15 @@
+---
+description: Web3-Frontier project conventions (pnpm workspace, Node + TS, Solana, wallet/AI safety)
+alwaysApply: true
+---
+
+# Web3-Frontier Conventions
+
+- pnpm workspace monorepo. Use `pnpm` only (never `npm`/`yarn`).
+- Node 20+ and TypeScript (strict) across all packages.
+- Layout will be `apps/cli`, `apps/web`, `packages/shared`, `packages/brand`. Don’t create a top-level root `src/`.
+- Solana-only. Use `@solana/web3.js` (no EVM libraries in v1).
+- Never log or print secret keys, mnemonics, passphrases, or raw keystore contents.
+- Any state-changing tool must do simulate + show summary + require explicit user confirmation before signing/sending.
+- All CLI output must support `--plain` mode and respect `NO_COLOR`.
+- Do not create any README files unless the user explicitly asks.

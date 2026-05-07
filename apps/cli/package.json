@@ -1,0 +1,24 @@
+{
+  "name": "@kiro/solana-cli",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "kiro": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.10.1",
+    "@solana/web3.js": "^1.98.4",
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.3"
+  }
+}

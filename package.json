@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm --filter @kiro/solana-cli dev",
-    "build": "pnpm --filter @kiro/solana-cli build"
+    "dev": "pnpm --filter kiro-agent dev",
+    "build": "pnpm --filter kiro-agent build"
   }
 }

@@ -1,8 +1,8 @@
-# Web3-Frontier — AI Solana Terminal (Project Spec)
+# Kiro — AI Solana Terminal (Project Spec)
 
 ## Vision
 
-Web3-Frontier is a **terminal-first Solana assistant**: users type natural language like “show my portfolio”, “send 0.1 SOL to …”, or “create a wallet”, and an integrated AI agent executes **safe, deterministic tools** to perform Web3 actions.
+Kiro is a **terminal-first Solana assistant**: users type natural language like “show my portfolio”, “send 0.1 SOL to …”, or “create a wallet”, and an integrated AI agent executes **safe, deterministic tools** to perform Web3 actions.
 
 The CLI must feel modern: rich UI in terminal, accessible, keyboard-first, and scriptable when needed.
 

@@ -1,82 +1,76 @@
+"use client";
 import { Button } from "@/components/ui/button";
-
-const DottedChevronRight = () => (
-  <svg 
-    width="12" 
-    height="12" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className="opacity-40" 
-    strokeDasharray="2 3"
-  >
-    <path d="m9 18 6-6-6-6"/>
-  </svg>
-);
-
-const DottedChevronLeft = () => (
-  <svg 
-    width="12" 
-    height="12" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className="opacity-40" 
-    strokeDasharray="2 3"
-  >
-    <path d="m15 18-6-6 6-6"/>
-  </svg>
-);
+import Badge from "@/shared/Badge/Badge";
+import { Check, Copy } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { motion } from "motion/react";
 
 const Herosection = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("npm install -g kiro-agent");
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-4xl w-full flex flex-col items-center text-center space-y-6">
-        
-        {/* Badge */}
-        <div className="inline-flex items-center justify-center space-x-3 px-3 py-1.5 rounded-md border border-gray-200/60 bg-gray-50/50 shadow-sm mb-2">
-          <DottedChevronLeft />
-          <span className="text-[11px] font-bold tracking-[0.15em] text-gray-500 uppercase">
-            Digital Agency
+    <div className="flex flex-col justify-center items-center max-w-3xl mx-auto gap-4 py-40">
+      <Badge text="Kiro Agent" />
+      <h1 className="text-6xl font-medium text-center leading-16">
+        All your commands, in one{" "}
+        <span className="text-primary">
+          Intelligent
+        </span>{" "}
+        terminal
+      </h1>
+      <p className="text-center font-medium text-muted-foreground">
+        Kiro is a Solana terminal assistant that lets you interact with your
+        wallet and tokens using simple natural language commands.
+      </p>
+      <div className="relative mt-6 flex items-center gap-2">
+        <div className="absolute -left-34 -bottom-5 flex items-start pr-3">
+          <span
+            className="text-primary text-2xl whitespace-nowrap mt-4 mr-2"
+            style={{ fontFamily: "var(--font-caveat)" }}
+          >
+            Give a Star
           </span>
-          <DottedChevronRight />
+          <Image
+            width={40}
+            height={40}
+            src="/icons/arrow.svg"
+            alt="arrow"
+            className="w-8 h-8 translate-y-1"
+          />
         </div>
-
-        {/* Heading */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#111111] leading-[1.15]">
-          We design brands <br className="hidden sm:block" />
-          that move <span className="text-primary">people</span>
-        </h1>
-
-        {/* Subheading */}
-        <p className="max-w-2xl text-lg sm:text-xl text-gray-500 font-medium leading-relaxed mt-4">
-          We combine strategy, design, and technology to help ambitious brands stand out & create meaningful digital experiences.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 w-full sm:w-auto">
-          <Button 
-            size="lg" 
-            className="w-full sm:w-auto bg-[#ff5a1f] hover:bg-[#e04a18] text-white font-semibold text-base px-8 py-6 rounded-xl shadow-lg shadow-[#ff5a1f]/20 transition-all"
+        <Button className="rounded-sm p-4 text-sm font-medium bg-primary border-orange-600 shadow-sm ">
+          Github
+        </Button>
+        <div className="shadow-cm p-2 px-4 rounded-sm flex items-center justify-center gap-2">
+          <span className=" text-sm whitespace-nowrap  ">
+            npm install -g kiro-agent
+          </span>
+          <motion.button
+            initial={{ opacity: 1, scale: 1, rotate: 0 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+            transition={{ type: "spring", bounce: 0.5 }}
+            onClick={handleCopy}
+            className="relative flex items-center justify-center w-6 h-6 ml-1 cursor-pointer"
           >
-            Discuss your ideas
-          </Button>
-          <Button 
-            size="lg" 
-            className="w-full sm:w-auto bg-[#0a0a0a] hover:bg-[#222222] text-white font-semibold text-base px-8 py-6 rounded-xl shadow-lg transition-all"
-          >
-            View services
-          </Button>
+            {copied ? (
+              <Check className="text-primary size-4 " />
+            ) : (
+              <Copy className="text-primary size-4 " />
+            )}
+          </motion.button>
         </div>
-
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Oxanium } from "next/font/google";
+import { Oxanium, Geist, Caveat } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Footer from "@/shared/Footer/Footer";
+import Navbar from "@/shared/Navbar/Navbar";
 
-const oxanium = Oxanium({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const oxanium = Oxanium({ subsets: ["latin"], variable: "--font-oxanium" });
+const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat" });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
 export const metadata: Metadata = {
   title: "Kiro",
@@ -32,13 +25,14 @@ export default function RootLayout({
       className={cn(
         "h-full",
         "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        "font-sans",
+        "font-geist",
         oxanium.variable,
+        geist.variable,
+        caveat.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="bg-[#F5F4F3]">
+        <Navbar />
         {children}
         <Footer />
       </body>

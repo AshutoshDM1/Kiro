@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm --filter kiro-agent dev",
-    "build": "pnpm --filter kiro-agent build"
+    "dev": "pnpm --filter kiro-web dev",
+    "build": "pnpm --filter kiro-web build"
   }
 }

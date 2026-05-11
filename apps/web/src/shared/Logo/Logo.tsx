@@ -11,7 +11,7 @@ const Logo = ({ className }: LogoProps) => {
       <Image
         src="/favicon/favicon.svg"
         alt="logo"
-        className={cn(className, "size-12")}
+        className={cn("size-12", className)}
         width={96}
         height={96}
       />

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src = "https://res.cloudinary.com/dnvl8mqba/image/upload/v1778347425/Kiro/f4c7f47e-70be-4925-9a37-f0ec956f356f.png" alt="Kiro - AI Solana Terminal" width = "100px" />
+  <img src = "https://res.cloudinary.com/dnvl8mqba/image/upload/v1778506909/Kiro/image-Picsart-BackgroundRemover_amb1kk.png" alt="Kiro - AI Solana Terminal" width = "100px" />
 
   # Kiro: AI-Powered Solana Terminal
 

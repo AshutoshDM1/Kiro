@@ -22,10 +22,7 @@ const Herosection = () => {
       <Badge text="Kiro Agent" />
       <h1 className="text-6xl font-medium text-center leading-16">
         All your commands, in one{" "}
-        <span className="text-primary">
-          Intelligent
-        </span>{" "}
-        terminal
+        <span className="text-primary">Intelligent</span> terminal
       </h1>
       <p className="text-center font-medium text-muted-foreground">
         Kiro is a Solana terminal assistant that lets you interact with your
@@ -47,7 +44,12 @@ const Herosection = () => {
             className="w-8 h-8 translate-y-1"
           />
         </div>
-        <Button className="rounded-sm p-4 text-sm font-medium bg-primary border-orange-600 shadow-sm ">
+        <Button
+          onClick={() =>
+            window.open("https://github.com/AshutoshDM1/kiro", "_blank")
+          }
+          className="rounded-sm p-4 text-sm font-medium bg-primary border-orange-600 shadow-sm "
+        >
           Github
         </Button>
         <div className="shadow-cm p-2 px-4 rounded-sm flex items-center justify-center gap-2">

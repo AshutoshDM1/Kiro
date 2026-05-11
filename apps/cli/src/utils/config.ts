@@ -1,13 +1,13 @@
 import Conf from "conf";
 
 export type KiroConfig = {
+  isConfigured?: boolean;
+  agentType?: "gemini" | "vercel-ai";
   geminiApiKey?: string;
   modelName?: string;
-  useSharedKey?: boolean;
+  vercelApiKey?: string;
+  vercelModelName?: string;
 };
-
-// This is the "shared" key provided by the developer
-export const SHARED_API_KEY = "AIzaSyBO9TAcHUAUunnpKdu0aoiIQJ2HkHaL27g";
 
 const config = new Conf<KiroConfig>({
   projectName: "kiro-cli",
@@ -15,19 +15,33 @@ const config = new Conf<KiroConfig>({
 
 export function getConfig() {
   const savedKey = config.get("geminiApiKey");
-  const useShared = config.get("useSharedKey");
 
   return {
-    geminiApiKey: useShared ? SHARED_API_KEY : (savedKey || process.env.GEMINI_API_KEY),
-    modelName: config.get("modelName") || "gemini-3.1-flash-lite",
-    isShared: !!useShared
+    isConfigured: config.get("isConfigured") || false,
+    agentType: config.get("agentType") || "gemini",
+    geminiApiKey: savedKey || process.env.GEMINI_API_KEY,
+    modelName: config.get("modelName") || "gemini-2.5-flash",
+    vercelApiKey:
+      config.get("vercelApiKey") ||
+      process.env.VERCEL_AI_KEY ||
+      process.env.AI_GATEWAY_API_KEY,
+    vercelModelName: config.get("vercelModelName") || "openai/gpt-4o",
   };
 }
 
 export function setConfig(updates: Partial<KiroConfig>) {
-  if (updates.geminiApiKey !== undefined) config.set("geminiApiKey", updates.geminiApiKey);
-  if (updates.modelName !== undefined) config.set("modelName", updates.modelName);
-  if (updates.useSharedKey !== undefined) config.set("useSharedKey", updates.useSharedKey);
+  if (updates.isConfigured !== undefined)
+    config.set("isConfigured", updates.isConfigured);
+  if (updates.agentType !== undefined)
+    config.set("agentType", updates.agentType);
+  if (updates.geminiApiKey !== undefined)
+    config.set("geminiApiKey", updates.geminiApiKey);
+  if (updates.modelName !== undefined)
+    config.set("modelName", updates.modelName);
+  if (updates.vercelApiKey !== undefined)
+    config.set("vercelApiKey", updates.vercelApiKey);
+  if (updates.vercelModelName !== undefined)
+    config.set("vercelModelName", updates.vercelModelName);
 }
 
 export function clearConfig() {

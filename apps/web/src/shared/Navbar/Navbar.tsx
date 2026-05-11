@@ -1,4 +1,5 @@
-import { ChartNoAxesGantt} from "lucide-react";
+"use client";
+import { ChartNoAxesGantt } from "lucide-react";
 import Logo from "../Logo/Logo";
 import { Button } from "@/components/ui/button";
 
@@ -16,7 +17,14 @@ const Navbar = () => {
           <ChartNoAxesGantt className="size-5" />
         </div>
         <div className="p-2 flex items-center justify-center">
-          <Button className="bg-black border border-zinc-500/80 px-5 text-xs ">Github</Button>
+          <Button
+            className="bg-black border border-zinc-500/80 px-5 text-xs "
+            onClick={() =>
+              window.open("https://github.com/AshutoshDM1/kiro", "_blank")
+            }
+          >
+            Github
+          </Button>
         </div>
       </div>
     </div>

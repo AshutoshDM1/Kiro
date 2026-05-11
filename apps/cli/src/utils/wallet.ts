@@ -1,4 +1,3 @@
-import { Keypair } from "@solana/web3.js";
 import { tryLoadSolanaCliKeypair, loadSolanaCliConfig } from "./solanaCliKeypair.js";
 
 export async function getLinkedWallet() {

@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Shield, Heart, Zap, Star, Anchor, Bell, Camera, Cloud, Compass, Crown, Diamond, Flame } from "lucide-react";
 import { motion } from "motion/react";
@@ -103,7 +104,7 @@ const SideRings = ({
   return (
     <motion.div
       className={cn(
-        "hidden  absolute top-0 w-full h-full z-50 2xl:flex items-center justify-center",
+        "hidden absolute top-0 w-full h-full z-50 xl:flex items-center justify-center",
         className,
       )}
       animate={{ rotate: reverse ? -360 : 360 }}

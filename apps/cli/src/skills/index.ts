@@ -1,10 +1,11 @@
 import pc from "picocolors";
 import { getBalance, getBalanceTool } from "./balance.js";
 import { getWalletInfo, getWalletInfoTool } from "./wallet.js";
+import { createToken, createTokenTool } from "./token.js";
 
 export const tools = [
   {
-    functionDeclarations: [getBalanceTool, getWalletInfoTool]
+    functionDeclarations: [getBalanceTool, getWalletInfoTool, createTokenTool]
   }
 ];
 
@@ -15,5 +16,8 @@ export const skillHandlers: Record<string, Function> = {
   },
   get_wallet_info: async () => {
     return await getWalletInfo();
+  },
+  create_token: async (args: any) => {
+    return await createToken(args);
   }
 };

@@ -57,9 +57,13 @@ const GithubIcon = () => (
 );
 
 const SOCIAL_LINKS = [
-  { icon: <TwitterIcon />, name: "X", url: "#" },
-  { icon: <LinkedinIcon />, name: "Linkedin", url: "#" },
-  { icon: <GithubIcon />, name: "Github", url: "https://github.com/AshutoshDM1" },
+  { icon: <TwitterIcon />, name: "X", url: "https://x.com/AshutoshDM_1" },
+  { icon: <LinkedinIcon />, name: "Linkedin", url: "https://www.linkedin.com/in/ashutosh-tiwari-8931b82b8/" },
+  {
+    icon: <GithubIcon />,
+    name: "Github",
+    url: "https://github.com/AshutoshDM1",
+  },
 ];
 
 const Footer = () => {
@@ -81,7 +85,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-3 mt-3">
-            <h4 className="text-[11px] font-bold text-gray-400 tracking-[0.15em] uppercase">
+            <h4 className="text-[11px] text-gray-400 tracking-[0.15em] uppercase">
               Follow Us On
             </h4>
             <div className="flex items-center gap-2">
@@ -98,8 +102,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="p-3 text-sm text-muted-foreground bg-stone-200 rounded-sm border border-stone-300 mt-10">
-          © 2026 Kiro. All rights reserved
+        <div className="p-3 text-sm text-muted-foreground bg-stone-200/50 rounded-sm border border-stone-300 mt-10">
+          <div className="flex justify-between">
+            <span>© 2026 Kiro. All rights reserved </span>{" "}
+            <Link href="https://x.com/AshutoshDM_1" target="_blank">
+              <span>@Ashutosh</span>
+            </Link>
+          </div>
         </div>
       </footer>
     </Section>

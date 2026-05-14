@@ -53,8 +53,8 @@ This project is a monorepo managed with **pnpm workspaces**.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/AshutoshDM1/Web3-Frontier.git
-   cd Web3-Frontier
+   git clone https://github.com/AshutoshDM1/Kiro.git
+   cd Kiro
    ```
 
 2. **Install dependencies:**
@@ -99,11 +99,11 @@ This project is a monorepo managed with **pnpm workspaces**.
 ## 🗺️ Roadmap
 
 - [x] **M1**: Scaffold pnpm workspace + CLI skeleton
-- [ ] **M2**: Encrypted keystore + Wallet management
-- [ ] **M3**: Rich Portfolio TUI (SOL + SPL)
-- [ ] **M4**: Gemini Tool-Calling Integration
+- [x] **M2**: Encrypted keystore + Wallet management
+- [x] **M3**: Rich Portfolio TUI (SOL + SPL)
+- [x] **M4**: Gemini Tool-Calling Integration
+- [x] **M6**: Next.js Landing Page
 - [ ] **M5**: Guardrailed Transfers
-- [ ] **M6**: Next.js Landing Page
 - [ ] **M7**: Jupiter Swap Integration
 
 ## 📄 License
@@ -113,5 +113,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 <div align="center">
-  Built with ❤️ for the Solana Community.
+  Built with ❤️ for the Solana Collosium Hackathon.
 </div>

@@ -1,9 +1,13 @@
 "use client";
-import { ChartNoAxesGantt } from "lucide-react";
+import { useState } from "react";
+import { ChartNoAxesGantt, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import { Button } from "@/components/ui/button";
+import Menubar from "./Menubar";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="fixed top-10 left-1/2 -translate-x-1/2 z-50 bg-transparent">
       <div className="bg-white max-w-sm mx-auto rounded-lg shadow-sm border-3 border-neutral-100   flex justify-between ">
@@ -13,8 +17,12 @@ const Navbar = () => {
           </div>
           <p className="text-xl font-bold">Kiro</p>
         </div>
-        <div className="border-x-3 px-5 border-neutral-100 p-2 flex items-center justify-center">
-          <ChartNoAxesGantt className="size-5" />
+        <div className="cursor-pointer border-x-3 px-5 border-neutral-100 p-2 flex items-center justify-center">
+          {isOpen ? (
+            <X className="size-5" onClick={() => setIsOpen(false)} />
+          ) : (
+            <ChartNoAxesGantt className="size-5" onClick={() => setIsOpen(true)} />
+          )}
         </div>
         <div className="p-2 flex items-center justify-center">
           <Button
@@ -27,6 +35,7 @@ const Navbar = () => {
           </Button>
         </div>
       </div>
+      <Menubar isOpen={isOpen} />
     </div>
   );
 };

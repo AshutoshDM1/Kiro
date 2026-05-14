@@ -8,14 +8,14 @@ const Home = () => {
       <SideRings
         className="left-[-70%]"
         firstRingSize={1000}
-        secondRingSize={800}
-        thirdRingSize={600}
+        secondRingSize={850}
+        thirdRingSize={700}
       />
       <SideRings
         className="right-[-70%] "
         firstRingSize={1000}
-        secondRingSize={800}
-        thirdRingSize={900}
+        secondRingSize={850}
+        thirdRingSize={700}
         reverse
       />
       <Section>

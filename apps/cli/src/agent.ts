@@ -10,6 +10,14 @@ import { tools, skillHandlers } from "./skills/index.js";
 import { getModel } from "./utils/gemini.js";
 import { getConfig } from "./utils/config.js";
 import { getLinkedWallet } from "./utils/wallet.js";
+import {
+  loadChatHistory,
+  printChatHistory,
+  saveChatHistory,
+  clearChatHistory,
+  getRecentMessagesForAI,
+  type ChatMessage,
+} from "./utils/chat-history.js";
 
 export async function runAgent() {
   console.log(
@@ -82,6 +90,27 @@ OPERATIONAL RULES:
 
   p.log.info(pc.cyan("I'm ready! What would you like to do?"));
 
+  let chatHistory: ChatMessage[] = [];
+
+  if (config.agentType === "gemini") {
+    const savedHistory = loadChatHistory();
+    if (savedHistory && savedHistory.length > 0) {
+      printChatHistory(savedHistory);
+      const load = await p.select({
+        message: "Previous chat history found. Load it?",
+        options: [
+          { value: "yes", label: "Yes, continue where we left off" },
+          { value: "no", label: "No, start fresh" },
+        ],
+      });
+      if (load === "yes") {
+        chatHistory = savedHistory;
+      } else {
+        clearChatHistory();
+      }
+    }
+  }
+
   if (config.agentType === "vercel-ai") {
     await runVercelGatewayChatLoop({
       apiKey: config.vercelApiKey!,
@@ -91,9 +120,18 @@ OPERATIONAL RULES:
     return;
   }
 
+  const recentMessages = getRecentMessagesForAI(chatHistory);
+
+  const historyForChat: { role: "user" | "model"; parts: { text: string }[] }[] = recentMessages.map(
+    (msg) => ({
+      role: msg.role,
+      parts: [{ text: msg.content }],
+    }),
+  );
+
   const agentModel = getModel(systemInstruction);
   const chat = agentModel.startChat({
-    history: [],
+    history: historyForChat,
     tools: tools as never,
   });
 
@@ -159,6 +197,18 @@ OPERATIONAL RULES:
 
       const text = response.text();
       p.log.message(`${pc.cyan("Kiro:")} ${text}`);
+
+      chatHistory.push({
+        role: "user",
+        content: userInput as string,
+        timestamp: Date.now(),
+      });
+      chatHistory.push({
+        role: "model",
+        content: text,
+        timestamp: Date.now(),
+      });
+      saveChatHistory(chatHistory);
     } catch (error: unknown) {
       thinking.stop();
       const msg = error instanceof Error ? error.message : String(error);

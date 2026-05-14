@@ -72,7 +72,7 @@ const Footer = () => {
       <footer className="py-5">
         <div className="grid grid-cols-1 md:grid-cols-4">
           <div className="col-span-1 md:col-span-3 max-w-60">
-            <div className="flex items-center gap-2 p-2">
+            <div className="flex items-center gap-2 pb-2">
               <div className="bg-neutral-100/80 border rounded-lg p-1.5">
                 <Logo className="size-5" />
               </div>
